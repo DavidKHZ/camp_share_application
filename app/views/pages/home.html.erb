@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Camping Gear & Accessories for rent</h1>
+
+
+<% @lists = ["Tents", "Bedding", "Fridges & Coolers", "Heating & Cooling"] %>
+
+<% @lists.each do |list| %>
+<%= list %>
+<% end %>
