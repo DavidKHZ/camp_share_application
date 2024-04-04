@@ -7,5 +7,9 @@ class User < ApplicationRecord
 
   has_many :offers
   has_many :bookings
-  has_many :provided_bookings, through: :offers, source: :bookings  # Bookings where the user is the provider
+  # Bookings where the user is the provider
+  has_many :provided_bookings, through: :offers, source: :bookings
+  has_one_attached :avatar
+
+  validates :avatar, attached: true, content_type: [:png, :jpg, :jpeg]
 end
