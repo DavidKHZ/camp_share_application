@@ -15,3 +15,14 @@ Offer.destroy_all
 User.destroy_all
 
 puts 'Database cleaned'
+
+# Create 5 users
+puts 'Creating users'
+5.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: 'password', # Assuming all users have the same password for simplicity
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+end
