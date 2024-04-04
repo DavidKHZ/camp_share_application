@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module CampShareApplication
   class Application < Rails::Application
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
     config.action_controller.raise_on_missing_callback_actions = false if Rails.version >= "7.1.0"
     config.generators do |generate|
       generate.assets false
