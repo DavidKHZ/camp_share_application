@@ -38,7 +38,7 @@ index = 0
   rand(3..5).times do
     offer = user.offers.create!(
       name: Faker::Commerce.product_name,
-      category: Faker::Commerce.department(max: 1, fixed_amount: true),
+      category: CATEGORIES.sample,
       pick_up_from: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
       pick_up_till: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60),
       return_from: Faker::Time.between(from: DateTime.now + 61, to: DateTime.now + 90),
