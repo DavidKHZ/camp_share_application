@@ -33,26 +33,28 @@ puts 'Creating offers'
 users = User.order('RANDOM()')
 index = 0
 2.times do
-  user = users[index] # Randomly select a user
+  # pick the first user from the randomised list of user then the second one
+  user = users[index]
   rand(3..5).times do
     offer = user.offers.create!(
-    name: Faker::Commerce.product_name,
-    category: Faker::Commerce.department(max: 1, fixed_amount: true),
-    pick_up_from: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
-    pick_up_till: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60),
-    return_from: Faker::Time.between(from: DateTime.now + 61, to: DateTime.now + 90),
-    return_till: Faker::Time.between(from: DateTime.now + 91, to: DateTime.now + 120),
-    country: Faker::Address.country,
-    state: Faker::Address.state,
-    city: Faker::Address.city,
-    postcode: Faker::Address.postcode,
-    address_1: Faker::Address.street_address,
-    address_2: Faker::Address.secondary_address,
-    description: Faker::Lorem.paragraph,
-    available: true,
-    price_per_day: Faker::Number.decimal(l_digits: 2)
-  )
+      name: Faker::Commerce.product_name,
+      category: Faker::Commerce.department(max: 1, fixed_amount: true),
+      pick_up_from: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
+      pick_up_till: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60),
+      return_from: Faker::Time.between(from: DateTime.now + 61, to: DateTime.now + 90),
+      return_till: Faker::Time.between(from: DateTime.now + 91, to: DateTime.now + 120),
+      country: Faker::Address.country,
+      state: Faker::Address.state,
+      city: Faker::Address.city,
+      postcode: Faker::Address.postcode,
+      address_1: Faker::Address.street_address,
+      address_2: Faker::Address.secondary_address,
+      description: Faker::Lorem.paragraph,
+      available: true,
+      price_per_day: Faker::Number.decimal(l_digits: 2)
+    )
   end
+  index += 1
 end
 puts 'Offers created'
 
@@ -60,8 +62,9 @@ puts 'Creating bookings'
 # Create bookings requested by 3 other users
 10.times do
   # Randomly select a user who hasn't created an offer
-  user = User.where.not(id: Offer.pluck(:user_id)).order('RANDOM()').first
-  offer = Offer.order('RANDOM()').first # Randomly select an offer
+  user = User.where.not(id: Offer.pluck(:user_id)).sample
+  # Randomly select an offer
+  offer = Offer.all.sample
   booking = Booking.create!(
     user: user,
     offer: offer,
@@ -75,9 +78,9 @@ end
 # Create bookings from an owner
 3.times do
   # Randomly select a user who hasn't created an offer
-  user = User.where.(id: Offer.pluck(:user_id)).order('RANDOM()').first
+  user = User.where(id: Offer.pluck(:user_id)).sample
   # Randomly select an offer
-  offer = Offer.order('RANDOM()').first
+  offer = Offer.all.sample
   booking = Booking.create!(
     user: user,
     offer: offer,
