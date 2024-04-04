@@ -78,3 +78,6 @@ end
 
 # for managing user registration & login
 gem "devise"
+# for enabling user image upload
+# !!! do not forget to set your CLOUDINARY_URL in your local .env file
+gem "cloudinary"
