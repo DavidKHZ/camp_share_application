@@ -56,12 +56,28 @@ index = 0
 end
 puts 'Offers created'
 
-puts 'Creating offers'
+puts 'Creating bookings'
 # Create bookings requested by 3 other users
-3.times do
+10.times do
   # Randomly select a user who hasn't created an offer
   user = User.where.not(id: Offer.pluck(:user_id)).order('RANDOM()').first
   offer = Offer.order('RANDOM()').first # Randomly select an offer
+  booking = Booking.create!(
+    user: user,
+    offer: offer,
+    from: Faker::Date.between(from: Date.today + 10, to: Date.today + 20),
+    to: Faker::Date.between(from: Date.today + 21, to: Date.today + 30),
+    # Assuming we use these 3 statuses
+    status: %w[pending accepted rejected cancelled][rand(0..3)]
+  )
+end
+
+# Create bookings from an owner
+3.times do
+  # Randomly select a user who hasn't created an offer
+  user = User.where.(id: Offer.pluck(:user_id)).order('RANDOM()').first
+  # Randomly select an offer
+  offer = Offer.order('RANDOM()').first
   booking = Booking.create!(
     user: user,
     offer: offer,
