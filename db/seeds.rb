@@ -71,7 +71,7 @@ puts 'Creating bookings'
     from: Faker::Date.between(from: Date.today + 10, to: Date.today + 20),
     to: Faker::Date.between(from: Date.today + 21, to: Date.today + 30),
     # Assuming we use these 3 statuses
-    status: %w[pending accepted rejected cancelled][rand(0..3)]
+    status: STATUSES.sample
   )
 end
 
@@ -87,6 +87,6 @@ end
     from: Faker::Date.between(from: Date.today + 10, to: Date.today + 20),
     to: Faker::Date.between(from: Date.today + 21, to: Date.today + 30),
     # Assuming we use these 3 statuses
-    status: %w[pending accepted rejected cancelled][rand(0..3)]
+    status: STATUSES.sample
   )
 end
