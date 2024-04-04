@@ -1,8 +1,27 @@
-<h1>Camping Gear & Accessories for rent</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://mediap.flypgs.com/awh/1254/836//files/Ekstrem_Sporlar/camping-kampcilik-nedir.webp)">
+  CAMPING
+</div>
+<br/>
+<div class="container">
+<h1 class="text-center text-info">Camping Gear & Accessories for rent</h1>
+<br/>
+<div class="card-container row justify-content-center">
+<% CATEGORIES.each do |category| %>
+  <div class="col-md-6">
+  <div class="card shadow mb-4" style="width: 20rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h4 class="card-text text-info"><%= category %></h4>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+</div>
+<br/>
+<div>
+<h4 class="text-center text-info">CAMPSHARE AUSTRALIA</h4>
+<p class="text-center">Are you an experienced camper? Or looking for how to start camping? Then CampShare is the camping store for you! you'll find the highest quality range of gazebos, tents and swags to suit your regular camping trip or the right advice for your first outdoor experience. If you're a budding outdoor cook, CampShare can also help you with a full range of gas cooking, utensils and accessories for your BBQ. ChampShare stocks all the big brands such as Weber, Wanderer, and Engel.
 
-
-<% @lists = ["Tents", "Bedding", "Fridges & Coolers", "Heating & Cooling"] %>
-
-<% @lists.each do |list| %>
-<%= list %>
-<% end %>
+There is nothing as good as pulling away from the daily routine by heading outdoors to spend time with family and your best mates. At CampShare, we aim to make your outdoor camping experience a memorable one by offering a massive range of camping supplies, accessories, and equipment. Our camping gear and accessories are designed to meet your needs when in the bush, at the park, or at the beach.</p>
+</div>
