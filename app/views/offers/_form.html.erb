@@ -1,0 +1,18 @@
+<%= simple_form_for(offer) do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :category, as: :select, collection: CATEGORIES %>
+  <%= f.input :pick_up_from, as: :datetime_picker %>
+  <%= f.input :pick_up_till, as: :datetime_picker %>
+  <%= f.input :return_from, as: :datetime_picker %>
+  <%= f.input :return_till, as: :datetime_picker %>
+  <%= f.input :country %>
+  <%= f.input :state %>
+  <%= f.input :city %>
+  <%= f.input :postcode %>
+  <%= f.input :address_1 %>
+  <%= f.input :address_2 %>
+  <%= f.input :description %>
+  <%= f.input :available, as: :boolean %>
+  <%= f.input :price_per_day %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+<% end %>

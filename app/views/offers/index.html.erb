@@ -1,0 +1,5 @@
+<h1>Here is the camping material you might need</h1>
+
+<% @offers.each do |offer| %>
+  <%= link_to offer.name, offer %>
+<% end %>
