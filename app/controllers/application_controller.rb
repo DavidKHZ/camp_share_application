@@ -8,28 +8,14 @@ class ApplicationController < ActionController::Base
   # Permit additional parameters for Devise registration forms
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-<<<<<<< Updated upstream
     def configure_permitted_parameters
         # For additional fields in app/views/devise/registrations/new.html.erb
         devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     
         # For additional in app/views/devise/registrations/edit.html.erb
         devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
-      end
+    end
 
     def home
     end
 end
-=======
-  def configure_permitted_parameters
-    # Permit additional fields for sign up and account update
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
-  end
-  
-  # Define the home action
-  def home
-    # Optionally, you can add logic here for rendering the home page
-  end
-end
->>>>>>> Stashed changes
