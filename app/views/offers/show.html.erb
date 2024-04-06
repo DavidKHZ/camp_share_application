@@ -1,2 +1,14 @@
-<h1><%= @offer.name %></h1>
-<p><%= @offer.description %></p>
+<h1 class="mb-4"><%= @offer.name %></h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= render 'complete-product-description', offer: @offer %>
+  </div>
+  <div class="col-md-4">
+    <% if user_signed_in? %>
+      <%= render 'booking-form', offer: @offer %>
+    <% else %>
+      <%= render 'require-signin' %>
+    <% end %>
+  </div>
+</div>
