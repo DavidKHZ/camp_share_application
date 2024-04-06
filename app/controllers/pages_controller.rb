@@ -6,5 +6,6 @@ class PagesController < ApplicationController
   end
   def category
     @category = params[:format]
+    @offer = Offer.where(category:@category)
   end
 end
