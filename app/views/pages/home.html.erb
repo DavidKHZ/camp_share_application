@@ -8,8 +8,10 @@
 <div class="card-container row justify-content-center">
 <% CATEGORIES.each do |category| %>
   <div class="col-md-4">
-  <div class="card shadow mb-4" style="width: 18rem;">
-   <img src="<%= image_path("#{category}.png") %>" />
+  <div class="card shadow mb-4">
+    <div class="card-image">
+      <img src="<%= image_path("#{category}.png") %>" />
+    </div>
     <div class="card-body">
       <h4 class="card-text text-info"><%= category %></h4>
     </div>
