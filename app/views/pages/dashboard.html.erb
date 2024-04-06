@@ -1,9 +1,13 @@
-
-  <div>
-    <h1>Welcome, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
-    <img class="profile-picture" alt="Profile Picture" src="<%= cl_image_path(@user.avatar.key, width: 38, height: 38, crop: :thumb, gravity: :face) %>" />
+<div>
+  <h1>Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+  <img class="profile-picture" alt="Profile Picture" src="<%= cl_image_path(current_user.avatar.key, width: 300, height: 300, crop: :thumb, gravity: :face) %>" />
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <h2>My Listings:</h2>
+    <%# <%= render @products %> <!-- Assumes @products instance variable contains all the user's products -->
   </div>
-
-  <h2>My Listings</h2>
-
-  <button><p>Add a listing</p></button>
+  <div class="col-md-8 text-center mt-3">
+    <button class="custom-button"><%= link_to "New product", new_product_path %></button>
+  </div>
+</div>

@@ -19,3 +19,17 @@ img.profile-picture {
   max-width: 200px; /* Increase the max-width value */
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
 }
+.custom-button {
+  padding: 8px 16px;
+  background-color: rgb(255, 173, 30);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: darken(rgb(255, 30, 30), 10%);
+}
