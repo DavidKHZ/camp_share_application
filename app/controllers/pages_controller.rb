@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     # @lists = List.all
   end
+  def category
+    @category = params[:format]
+  end
 end
