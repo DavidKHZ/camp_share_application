@@ -18,25 +18,37 @@ puts 'Database cleaned'
 
 # Create 5 users
 puts 'Creating users'
+require 'open-uri'
+
+index = 0
 5.times do
-  user = User.create!(
+  user = User.new(
     email: Faker::Internet.email,
     password: 'password', # Assuming all users have the same password for simplicity
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
+  # Generate and attach avatar image to the user
+  avatar_url = "https://source.unsplash.com/featured/?avatar"
+  user.avatar.attach(io: URI.open(avatar_url), filename: 'avatar.png')
+
+  user.save!
+  index += 1
+  puts "user n°#{index}/5 created"
 end
+
 puts 'Users created'
 
 # Create Offers on 2 users
 puts 'Creating offers'
 users = User.order('RANDOM()')
 index = 0
+offer_index = 0
 2.times do
   # pick the first user from the randomised list of user then the second one
   user = users[index]
-  rand(3..5).times do
-    offer = user.offers.create!(
+  20.times do
+    offer = user.offers.new(
       name: Faker::Commerce.product_name,
       category: CATEGORIES.sample,
       pick_up_from: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
@@ -53,6 +65,11 @@ index = 0
       available: true,
       price_per_day: Faker::Number.decimal(l_digits: 2)
     )
+    photo_url = "https://source.unsplash.com/featured/?#{offer.category}"
+    offer.photos.attach(io: URI.open(photo_url), filename: 'photo.png')
+    offer.save!
+    offer_index += 1
+    puts "Offer n°#{offer_index}/#{2*20} created"
   end
   index += 1
 end
@@ -60,7 +77,7 @@ puts 'Offers created'
 
 puts 'Creating bookings'
 # Create bookings requested by 3 other users
-10.times do
+1000.times do
   # Randomly select a user who hasn't created an offer
   user = User.where.not(id: Offer.pluck(:user_id)).sample
   # Randomly select an offer
