@@ -29,7 +29,7 @@ index = 0
     last_name: Faker::Name.last_name
   )
   # Generate and attach avatar image to the user
-  avatar_url = "https://source.unsplash.com/featured/?avatar"
+  avatar_url = "https://source.unsplash.com/featured/?portrait"
   user.avatar.attach(io: URI.open(avatar_url), filename: 'avatar.png')
 
   user.save!
@@ -65,7 +65,7 @@ offer_index = 0
       available: true,
       price_per_day: Faker::Number.decimal(l_digits: 2)
     )
-    photo_url = "https://source.unsplash.com/featured/?#{offer.category}"
+    photo_url = "https://source.unsplash.com/featured/?camping&#{offer.category}"
     offer.photos.attach(io: URI.open(photo_url), filename: 'photo.png')
     offer.save!
     offer_index += 1

@@ -1,0 +1,9 @@
+<a href="<%= offer_path(offer) %>"  class="card-offer mb-3">
+   <%= cl_image_tag offer.photos.first.key, height:120, height: 120, crop: :fill %>
+  <div class="card-offer-infos">
+    <h2><%= offer.name %></h2>
+    <p><%= offer.description %></p>
+    <p>Available in : <strong><%= offer.city %></strong></p>
+    <p><%= offer.price_per_day %> $/day</p>
+  </div>
+</a>
