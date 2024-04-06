@@ -24,4 +24,5 @@ class ApplicationController < ActionController::Base
         :city
         )
     end
+
 end
