@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user!
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :initialize_search
+
+    private
 
     def configure_permitted_parameters
         # For additional fields in app/views/devise/registrations/new.html.erb
@@ -10,4 +13,15 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :avatar])
     end
 
+    def initialize_search
+      @search = Offer.new(offer_params_search) if params[:offer]
+      @search ||= Offer.new
+    end
+
+    def offer_params_search
+      params.require(:offer).permit(
+        :category,
+        :city
+        )
+    end
 end

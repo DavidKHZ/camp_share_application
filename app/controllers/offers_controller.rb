@@ -5,9 +5,8 @@ class OffersController < ApplicationController
   # to be done : index show new create edit update
   def index
     @offers = Offer.all
-    @offers = @offers.where(category: params[:category]) if params[:category]
-    @offers = @offers.where(city: params[:city]) if params[:city]
-    @offers = @offers.where(country: params[:country]) if params[:country]
+    @offers = @offers.where(category: @search.category) if @search.category.present?
+    @offers = @offers.where(city: @search.city) if @search.city.present?
   end
 
   def show; end

@@ -1,36 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="" /> <%= image_tag("CampShare_logo.png", title: "CampSharelogo" ) %>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+    <div class="d-inline-flex justify-content-center ">
+      <%= render 'navbar/offers-searchbox' %>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
           <a class="nav-link" href="<%= root_path %>">Home</a>
         </li>
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= cl_image_path current_user.avatar.key, width: 38, height: 38, crop: :thumb, gravity: :face %>"/>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/dashboard">My dashboard</a>
-              <a class="dropdown-item" href="<%= edit_user_password_path %>">Change password</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Log out</a>
-            </div>
-          </li>
-          <li class="nav-item">
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= user_session_path %>">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
-          </li>
-        <% end %>
+        <%= render 'navbar/rightdropdown' %>
       </ul>
     </div>
   </div>
