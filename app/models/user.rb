@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :provided_bookings, through: :offers, source: :bookings
   has_one_attached :avatar
 
-  validates :avatar, attached: true, content_type: [:png, :jpg, :jpeg]
+  # validates :avatar, attached: true, content_type: [:png, :jpg, :jpeg]
 end
