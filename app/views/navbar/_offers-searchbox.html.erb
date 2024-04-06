@@ -1,10 +1,10 @@
 <%= simple_form_for @search, url: offers_path, method: :get, html: { class: 'my-custom-form form-inline' } do |f| %>
   <div class="row">
     <div class="col">
-      <%= f.input :category, collection: CATEGORIES, include_blank: true, input_html: { value: @search.category } %>
+      <%= f.input :category, collection: CATEGORIES, include_blank: true, input_html: { value: @search.category }, wrapper_html: { class: nil } %>
     </div>
     <div class="col">
-      <%= f.input :city, label: "City:", input_html: { value: @search.city } %>
+      <%= f.input :city, label: "City:", input_html: { value: @search.city }, wrapper_html: { class: nil } %>
     </div>
     <div class="col">
       <%= f.button :submit, "Filter" %>
