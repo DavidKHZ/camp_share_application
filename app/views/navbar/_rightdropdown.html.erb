@@ -1,0 +1,19 @@
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= cl_image_path current_user.avatar.key, width: 38, height: 38, crop: :thumb, gravity: :face %>"/>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/dashboard">My dashboard</a>
+              <a class="dropdown-item" href="<%= edit_user_password_path %>">Change password</a>
+              <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Log out</a>
+            </div>
+          </li>
+          <li class="nav-item">
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= user_session_path %>">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
+          </li>
+        <% end %>
