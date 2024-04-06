@@ -1,0 +1,77 @@
+    <div class="complete-product-description">
+      <div class="row">
+            <div class="pictures col-md-4">
+          <% offer.photos.each do |photo| %>
+            <%= image_tag photo.url, class: "img-fluid mt-3" %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="product-meta-description">
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Category:</strong> <%= offer.category %>
+              </div>
+              <div class="col-md-6">
+                <strong>Price Per Day:</strong> <%= offer.price_per_day %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Description:</strong> <%= offer.description %>
+              </div>
+            </div>
+          </div>
+
+          <div class="handover-times">
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Pick Up From:</strong> <%= format_time(offer.pick_up_from) %>
+              </div>
+              <div class="col-md-6">
+                <strong>Pick Up Till:</strong> <%= format_time(offer.pick_up_till) %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Return From:</strong> <%= format_time(offer.return_from) %>
+              </div>
+              <div class="col-md-6">
+                <strong>Return Till:</strong> <%= format_time(offer.return_till) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="address">
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Address 1:</strong> <%= offer.address_1 %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Address 2:</strong> <%= offer.address_2 %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Postcode:</strong> <%= offer.postcode %>
+              </div>
+              <div class="col-md-6">
+                <strong>City:</strong> <%= offer.city %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Country:</strong> <%= offer.country %>
+              </div>
+              <div class="col-md-6">
+                <strong>State:</strong> <%= offer.state %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

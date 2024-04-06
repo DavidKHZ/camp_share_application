@@ -1,0 +1,16 @@
+<%= simple_form_for([@offer, Booking.new], url: offer_bookings_path(@offer)) do |form| %>
+
+  <%= form.input :offer_id, as: :hidden, input_html: { value: @offer.id } %>
+
+  <div class="form-group">
+    <%= form.label :from, "From" %>
+    <%= form.input :from, as: :date, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :to, "To" %>
+    <%= form.input :to, as: :date, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <%= form.button :submit, "Book", class: "btn btn-primary" %>
+<% end %>

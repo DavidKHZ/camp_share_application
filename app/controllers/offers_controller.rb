@@ -4,7 +4,7 @@ class OffersController < ApplicationController
 
   # to be done : index show new create edit update
   def index
-    @offers = Offer.all
+    @offers = Offer.where(available: true)
     @offers = @offers.where(category: @search.category) if @search.category.present?
     @offers = @offers.where(city: @search.city) if @search.city.present?
   end
@@ -43,7 +43,7 @@ class OffersController < ApplicationController
   private
 
   def retrieve_offer
-    @offer = List.find(params[:id])
+    @offer = Offer.find(params[:id])
   end
 
   def offer_params
