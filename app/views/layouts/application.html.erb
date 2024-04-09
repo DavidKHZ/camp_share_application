@@ -13,7 +13,15 @@
   <body>
     <%= render 'layouts/navbar' %>
     <div class='container'>
-    <%= yield %>
+      <% flash.each do |key, value| %>
+        <div class="flash flash-<%= key %> alert alert-dismissible fade show" role="alert">
+          <span><%= value %></span>
+          <a data-bs-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
