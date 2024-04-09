@@ -1,18 +1,32 @@
-<%= simple_form_for([@offer, Booking.new], url: offer_bookings_path(@offer)) do |form| %>
+<div data-controller="rental-info" data-rental-info-dayrate="<%= @offer.price_per_day %>">
+  <%= simple_form_for([@offer, Booking.new], url: offer_bookings_path(@offer)) do |form| %>
 
-  <%= form.input :offer_id, as: :hidden, input_html: { value: @offer.id } %>
+    <%= form.input :offer_id, as: :hidden, input_html: { value: @offer.id } %>
 
-  <div class="form-group">
-    <%= form.input :from,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-  </div>
+    <div class="form-group">
+      <%= form.input :from,
+              as: :string,
+              input_html: { data: {
+                controller: "datepicker",
+                action: "change->rental-info#update",
+                rental_info_target: "from"
+                } } %>
+    </div>
 
-  <div class="form-group">
-    <%= form.input :to,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-  </div>
+    <div class="form-group">
+      <%= form.input :to,
+              as: :string,
+              input_html: { data: {
+                controller: "datepicker",
+                action: "change->rental-info#update",
+                rental_info_target: "to"
+                } } %>
+    </div>
 
-  <%= form.button :submit, "Book", class: "btn btn-primary" %>
-<% end %>
+    <%= form.button :submit, "Book", class: "btn btn-primary" %>
+    <span data-rental-info-target="text" class="d-none">
+      <span data-rental-info-target="days"></span><span> days for </span>
+      <span data-rental-info-target="price"></span><span> $</span>
+    </span>
+  <% end %>
+</div>
