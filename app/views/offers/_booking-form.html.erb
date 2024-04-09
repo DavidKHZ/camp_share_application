@@ -23,10 +23,11 @@
                 } } %>
     </div>
 
-    <%= form.button :submit, "Book", class: "btn btn-primary" %>
+    <%= form.button :submit, "Book", class: "btn btn-primary", data: { rental_info_target: "button" } %>
     <span data-rental-info-target="text" class="d-none">
       <span data-rental-info-target="days"></span><span> days for </span>
       <span data-rental-info-target="price"></span><span> $</span>
     </span>
+    <p data-rental-info-target="rule" class="d-none">The to date must be superior or equal to the from date.</p>
   <% end %>
 </div>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="rental-info"
 export default class extends Controller {
-  static targets = ["from", "to", "text", "days", "price"]
+  static targets = ["from", "to", "text", "days", "price", "button", "rule"]
 
   connect() {
     console.log("Rental info connected")
@@ -17,12 +17,17 @@ export default class extends Controller {
     console.log("From :", from)
     console.log("To :", to)
     console.log("Dayrate :", dayrate)
-    if (!isNaN(from) && !isNaN(to)) {
+    if (!isNaN(from) && !isNaN(to) && to >= from ) {
+      this.buttonTarget.disabled = false;
+      this.ruleTarget.classList.add("d-none")
       const days = this.rentalDays(from, to)
       console.log(days)
       this.textTarget.classList.remove("d-none")
       this.daysTarget.innerText = days
       this.priceTarget.innerText = Math.round(days * dayrate*100) / 100
+    } else if (!isNaN(from) && !isNaN(to) && from > to) {
+      this.buttonTarget.disabled = true;
+      this.ruleTarget.classList.remove("d-none")
     }
 
   }
