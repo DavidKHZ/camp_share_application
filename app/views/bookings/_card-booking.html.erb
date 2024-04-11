@@ -1,0 +1,17 @@
+<% offer = booking.offer %>
+<div class="card-booking"
+  data-controller="rental-info"
+  data-rental-info-dayrate="<%= offer.price_per_day %>"
+  data-action="rental-info#update">
+  <%= render 'offers/card-offer', offer: offer %>
+  <p>
+    <span>From : </span>
+    <input type="date" value="<%= booking.from %>" readonly data-rental-info-target="from" >
+    <span> till : </span>
+    <input type="date" value="<%= booking.to %>" readonly data-rental-info-target="to" >
+    <span data-rental-info-target="text" class="d-none"></span>
+    <span data-rental-info-target="button" class="d-none"></span>
+    <span data-rental-info-target="rule" class="d-none"></span>
+  </p>
+  <p>Total number of days : <span data-rental-info-target="days"></span> for a total price : <span data-rental-info-target="price"></span> $</p>
+</div>

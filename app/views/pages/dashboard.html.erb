@@ -1,0 +1,32 @@
+<h1>Dashboard</h1>
+<div>
+  <h2>Your profile</h2>
+  <p>Form to be implemented for profile update</p>
+</div>
+
+<div>
+  <h2>Your submitted bookings</h2>
+  <div class="cards-booking">
+  <% @submitted_bookings.each do |booking| %>
+    <%= render 'bookings/card-booking', booking: booking %>
+  <% end %>
+  </div>
+</div>
+
+<div>
+  <h2>Bookings on your offers</h2>
+  <div class="cards-booking">
+  <% @provided_bookings.each do |booking| %>
+    <%= render 'bookings/card-booking', booking: booking %>
+  <% end %>
+  </div>
+</div>
+
+<div>
+  <h2>Your offers</h2>
+  <div class="cards-offer">
+    <% @offers.each do |offer| %>
+      <%= render 'offers/card-offer', offer: offer %>
+    <% end %>
+  </div>
+</div>
