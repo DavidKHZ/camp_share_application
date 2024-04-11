@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get '/category/:category', to: 'pages#category', as: 'category'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :offers, only: %i[index show new create edit update] do

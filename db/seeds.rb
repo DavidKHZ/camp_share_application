@@ -48,9 +48,10 @@ offer_index = 0
   # pick the first user from the randomised list of user then the second one
   user = users[index]
   20.times do
+    category = CATEGORIES.sample
     offer = user.offers.new(
-      name: Faker::Commerce.product_name,
-      category: CATEGORIES.sample,
+      name: "#{user.first_name}'s #{category}",
+      category: category,
       pick_up_from: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
       pick_up_till: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60),
       return_from: Faker::Time.between(from: DateTime.now + 61, to: DateTime.now + 90),
@@ -65,7 +66,7 @@ offer_index = 0
       available: true,
       price_per_day: Faker::Number.decimal(l_digits: 2)
     )
-    photo_url = "https://source.unsplash.com/featured/?camping&#{offer.category}"
+    photo_url = "https://source.unsplash.com/featured/?camping&campfire&#{offer.category}"
     offer.photos.attach(io: URI.open(photo_url), filename: 'photo.png')
     offer.save!
     offer_index += 1
