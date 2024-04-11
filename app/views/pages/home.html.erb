@@ -8,7 +8,8 @@
 <div class="card-container row justify-content-center">
 <% CATEGORIES.each do |category| %>
 <div class="col-md-4">
-<%= link_to offers_path, class: "no-underline" do  %>
+<a href="<%= category_path(category) %>" class="no-underline">
+
   <div class="card shadow mb-4">
     <div class="card-image">
       <img src="<%= image_path("#{category}.png") %>" />
@@ -17,7 +18,8 @@
       <h4 class="card-text text-info" ><%= category %></h4>
     </div>
   </div>
-  <% end %>
+
+  </a>
   </div>
   <% end %>
 </div>

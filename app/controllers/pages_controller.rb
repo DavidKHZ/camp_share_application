@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     # @lists = List.all
   end
   def category
-    @category = params[:format]
-    @offer = Offer.where(category:@category)
+    @search = Offer.new(category: params[:category])
+    raise
   end
 end
