@@ -64,7 +64,7 @@
       <div class="cards-offer">
         <% @offers.each do |offer| %>
 
-            <%= render 'offers/card-offer', offer: offer %>
+            <%= render 'offers/card-offer', offer: offer, display_availibility: true %>
 
         <% end %>
       </div>
