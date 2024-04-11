@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   def home; end
 
   def dashboard
-    @submitted_bookings = Booking.where(user: current_user)
+    @submitted_bookings = current_user.bookings
+    @provided_bookings = current_user.provided_bookings
+    @offers = user.offers
   end
 end
