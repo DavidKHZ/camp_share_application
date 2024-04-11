@@ -1,0 +1,4 @@
+<% btn-type = "btn-success" if booking.status = "accepted" %>
+<% btn-type = "btn-danger" if booking.status in %w[rejected cancelled] %>
+<% btn-type = "btn-warning" if booking.status = "pending" %>
+<button class="btn <%= btn-type %>" disabled><%= booking.status %></button>

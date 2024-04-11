@@ -3,8 +3,9 @@
   data-controller="rental-info"
   data-rental-info-dayrate="<%= offer.price_per_day %>"
   data-action="rental-info#update">
+  <p class="m-1">Status : <%= render 'btn-status', booking: booking %></p>
   <%= render 'offers/card-offer', offer: offer %>
-  <p>
+  <p class="m-1">
     <span>From : </span>
     <input type="date" value="<%= booking.from %>" readonly data-rental-info-target="from" >
     <span> till : </span>
@@ -13,5 +14,5 @@
     <span data-rental-info-target="button" class="d-none"></span>
     <span data-rental-info-target="rule" class="d-none"></span>
   </p>
-  <p>Total number of days : <span data-rental-info-target="days"></span> for a total price : <span data-rental-info-target="price"></span> $</p>
+  <p class="m-1">Total number of days : <span data-rental-info-target="days"></span> for a total price : <span data-rental-info-target="price"></span> $</p>
 </div>
