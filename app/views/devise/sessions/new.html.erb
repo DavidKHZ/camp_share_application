@@ -1,25 +1,27 @@
-<% if user_signed_in? %>
-  <!-- Display a message indicating the user is already logged in -->
-  <p>You are already logged in.</p>
-<% else %>
-  <!-- Display the login form -->
-  <h2>Log in</h2>
+<div class="container">
+  <% if user_signed_in? %>
+    <!-- Display a message indicating the user is already logged in -->
+    <p>You are already logged in.</p>
+  <% else %>
+    <!-- Display the login form -->
+    <h2>Log in</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
-    </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Log in" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
   <% end %>
-  <%= render "devise/shared/links" %>
-<% end %>
+</div>

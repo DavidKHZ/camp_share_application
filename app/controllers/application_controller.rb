@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
     def initialize_search
       @search = Offer.new(offer_params_search) if params[:offer]
-      @search = Offer.new(category: session[:category]) if session[:category]
+      @search = Offer.new(category: params[:category]) if params[:category]
       # @search = Offer.new(category: params[:category]) if params[:category]
       @search ||= Offer.new
     end

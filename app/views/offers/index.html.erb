@@ -1,7 +1,9 @@
-<h1>Here is the camping material you might need</h1>
+<div class="container">
+  <h1>Here is the camping material you might need</h1>
 
-<div class="cards-offer">
-  <% @offers.each do |offer| %>
-    <%= render 'card-offer', offer: offer, display_availibility: false %>
-  <% end %>
+  <div class="cards-offer">
+    <% @offers.each do |offer| %>
+      <%= render 'card-offer', offer: offer, display_availibility: false %>
+    <% end %>
+  </div>
 </div>
