@@ -4,7 +4,7 @@
 
 <div class="btn-status btn <%= btn_type %>">
   <% if Date.today < booking.from && %w[accepted pending].include?(booking.status) %>
-    <div class="nav-item dropdown">
+    <div class="nav-item dropdown" data-controller="booking-status-update">
       <span id="navbarDropdown" data-bs-toggle="dropdown"><%= booking.status %> <i class="fa-solid fa-chevron-down" ></i></span>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <% if current_user == booking.user %>

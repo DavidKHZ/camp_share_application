@@ -14,7 +14,15 @@ class BookingsController < ApplicationController
   end
 
   def update_status
-    raise
+    @booking = Booking.find(params[:id])
+    permitted_statuses = gen_permitted_statuses
+    respond_to do |format|
+      if permitted_statuses.include?(params[:new_status]) && @booking.update(status: params[:new_status])
+        format.json { render :show, status: :ok, location: @offer }
+      else
+        format.json { render json: @offer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -29,6 +37,31 @@ class BookingsController < ApplicationController
       :from,
       :to
       )
+  end
+
+  def gen_permitted_statuses
+    if
+      (
+        Date.today < @booking.from &&
+        %w[accepted pending].include?(@booking.status) &&
+        current_user == @booking.user
+      )
+      permitted_statuses = %w[cancelled]
+    elsif (
+            Date.today < @booking.from &&
+            current_user == @booking.offer.user
+          )
+      if @booking.status == "accepted"
+        permitted_statuses = %w[cancelled]
+      elsif @booking.status == "pending"
+        permitted_statuses = %w[accepted rejected]
+      else
+        permitted_statuses =[]
+      end
+    else
+      permitted_statuses =[]
+    end
+    return permitted_statuses
   end
 
 end
