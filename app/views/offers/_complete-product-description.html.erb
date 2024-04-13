@@ -22,26 +22,6 @@
             </div>
           </div>
 
-          <div class="handover-times">
-            <div class="row">
-              <div class="col-md-6">
-                <strong>Pick Up From:</strong> <%= format_time(offer.pick_up_from) %>
-              </div>
-              <div class="col-md-6">
-                <strong>Pick Up Till:</strong> <%= format_time(offer.pick_up_till) %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <strong>Return From:</strong> <%= format_time(offer.return_from) %>
-              </div>
-              <div class="col-md-6">
-                <strong>Return Till:</strong> <%= format_time(offer.return_till) %>
-              </div>
-            </div>
-          </div>
-
           <div class="address">
             <div class="row">
               <div class="col-md-6">
@@ -69,6 +49,25 @@
               </div>
               <div class="col-md-6">
                 <strong>State:</strong> <%= offer.state %>
+              </div>
+            </div>
+          </div>
+           <div class="handover-times">
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Pick Up From:</strong> <%= format_time(offer.pick_up_from) %>
+              </div>
+              <div class="col-md-6">
+                <strong>Pick Up Till:</strong> <%= format_time(offer.pick_up_till) %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Return From:</strong> <%= format_time(offer.return_from) %>
+              </div>
+              <div class="col-md-6">
+                <strong>Return Till:</strong> <%= format_time(offer.return_till) %>
               </div>
             </div>
           </div>
