@@ -2,7 +2,14 @@
    <%= cl_image_tag offer.photos.first.key, height:120, height: 120, crop: :fill %>
   <div class="card-offer-infos">
     <h2><%= offer.name %></h2>
-    <p><%= offer.description %></p>
+    <div class="d-flex justify-content-between m-2 align-items-center">
+    <p class="m-0"><%= offer.description %></p>
+    <% if display_availibility %>
+      <% status = offer.available ? 'On-line' : 'Off-line' %>
+      <% btn_status = offer.available ? 'btn-light' : 'btn-dark' %>
+      <button class="btn <%= btn_status %>"><%= status %></button>
+    <% end %>
+    </div>
     <p>Available in : <strong><%= offer.city %></strong></p>
     <p><%= offer.price_per_day %> $/day</p>
   </div>

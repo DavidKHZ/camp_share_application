@@ -1,0 +1,77 @@
+<h1>Dashboard</h1>
+
+
+<div>
+  <div>
+    <h2>Your profile</h2>
+    <p>Form to be implemented for profile update</p>
+  </div>
+
+
+  <div>
+    <h2>Submitted bookings</h2>
+    <% if @submitted_bookings.count > 0 %>
+    <div class="cards-booking">
+      <% @submitted_bookings.each do |booking| %>
+        <%= render 'bookings/card-booking', booking: booking, display_offer: true %>
+      <% end %>
+    </div>
+    <% else %>
+      <p>No submitted booking at the moment.</p>
+    <% end %>
+  </div>
+
+  <% if @offers.count > 0 %>
+    <div>
+      <div>
+        <h2>Pending bookings</h2>
+        <% if @pending_bookings.count > 0 %>
+          <div class="cards-booking">
+            <% @pending_bookings.each do |booking| %>
+
+              <%= render 'bookings/card-booking', booking: booking, display_offer: true %>
+
+            <% end %>
+          </div>
+        <% else %>
+          <p>No booking pending confirmation at the moment.</p>
+        <% end %>
+      </div>
+
+      <div>
+        <h2>Upcomming bookings</h2>
+        <% if @upcoming_bookings.count > 0 %>
+          <div class="cards-booking">
+            <% @upcoming_bookings.each do |booking| %>
+
+              <%= render 'bookings/card-booking', booking: booking, display_offer: true %>
+
+            <% end %>
+          </div>
+        <% else %>
+          <p>No upcomming bookings at the moment.</p>
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <div>
+    <h2>Your offers</h2>
+    <%= link_to "Publish a new offer", new_offer_path, class: "btn btn-info" %>
+    <% if @offers.count > 0 %>
+      <div class="cards-offer">
+        <% @offers.each do |offer| %>
+
+            <%= render 'offers/card-offer', offer: offer, display_availibility: true %>
+
+        <% end %>
+      </div>
+    <% else %>
+      <p>You have no offer listed a the moment</p>
+    <% end %>
+  </div>
+
+
+</div>

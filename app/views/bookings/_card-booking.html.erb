@@ -1,0 +1,31 @@
+<% offer = booking.offer %>
+
+<div class="card-booking"
+  data-controller="rental-info"
+  data-rental-info-dayrate="<%= offer.price_per_day %>"
+  data-action="rental-info#update">
+
+  <div class="d-flex justify-content-between m-2 align-items-center">
+    <p class="m-0">Status : </p>
+    <%= render 'bookings/btn-status', booking: booking %>
+  </div>
+
+  <% if display_offer %>
+    <div class="m-2">
+      <%= render 'offers/card-offer', offer: offer, display_availibility: false %>
+    </div>
+  <% end %>
+
+  <div class="d-flex m-2">
+    <span class="input-group-text flex-fill">From :</span>
+    <input class="form-control flex-fill" placeholder="from" value="<%= booking.from %>" readonly data-rental-info-target="from" >
+    <span class="input-group-text flex-fill"> to :</span>
+    <input class="form-control flex-fill" placeholder="to" value="<%= booking.to %>" readonly data-rental-info-target="to" >
+  </div>
+  <span data-rental-info-target="text" class="d-none"></span>
+  <span data-rental-info-target="button" class="d-none"></span>
+  <span data-rental-info-target="rule" class="d-none"></span>
+
+  <p class="m-2">Total number of days : <span data-rental-info-target="days"></span> for a total price : <span data-rental-info-target="price"></span> $</p>
+
+</div>

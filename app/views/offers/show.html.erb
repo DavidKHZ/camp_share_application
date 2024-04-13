@@ -1,3 +1,4 @@
+
 <div class="show-container">
 <h1 class="mb-4"><%= @offer.name %></h1>
 
@@ -13,4 +14,19 @@
     <% end %>
   </div>
 </div>
+
+<% if current_user == @offer.user %>
+  <div>
+    <h3>Bookings listed on your offer</h3>
+    <% if @offer.bookings.count > 0 %>
+      <div class="cards-booking">
+        <% @offer.bookings.each do |booking| %>
+          <%= render 'bookings/card-booking', booking: booking, display_offer: false %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No bookings listed for that booking at the moment</p>
+    <% end %>
+  </div>
+<% end %>
 </div>
