@@ -5,8 +5,7 @@ class PagesController < ApplicationController
   def home; end
 
   def category
-    session[:category] = params[:category]
-    redirect_to offers_path
+    redirect_to offers_path(category: params[:category])
   end
 
   def dashboard
