@@ -13,7 +13,7 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div class='container'>
+    <div>
       <% flash.each do |key, value| %>
         <div class="flash flash-<%= key %> alert alert-dismissible fade show" role="alert">
           <span><%= value %></span>
