@@ -1,4 +1,4 @@
-<h1 class="mb-4"><%= @offer.name %></h1>
+<h1 class="mb-4 mt-4"><%= @offer.name %></h1>
 
 <% if current_user == @offer.user %>
   <%= link_to "Update booking", edit_offer_path, class: "btn btn-info" %>
