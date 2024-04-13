@@ -1,8 +1,9 @@
+
     <div class="complete-product-description">
       <div class="row">
             <div class="pictures col-md-4">
           <% offer.photos.each do |photo| %>
-            <%= image_tag photo.url, class: "img-fluid mt-3" %>
+            <%= image_tag photo.url, class: "img-fluid mt-3 w-75" %>
           <% end %>
         </div>
         <div class="col-md-8">
