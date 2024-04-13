@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :offers, only: %i[index show new create edit update] do
     resources :bookings, only: %i[create]
   end
+
   get '/dashboard', to: 'pages#dashboard'
+  get '/bookings/:id&:new_status', to: 'bookings#update_status', as: 'update_booking_status'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update_status
+    raise
+  end
+
   private
 
   def retrieve_offer

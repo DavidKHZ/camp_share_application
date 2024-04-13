@@ -1,24 +1,27 @@
 <% btn_type = "btn-success" if booking.status = "accepted" %>
 <% btn_type = "btn-danger" if %w[rejected cancelled].include?(booking.status) %>
 <% btn_type = "btn-warning" if booking.status = "pending" %>
-<button class="btn <%= btn_type %>" disabled><%= booking.status %></button>
 
-<% if Date.today < booking.from %>
-  <li class="nav-item dropdown">
-    <i class="fa-solid fa-chevron-down" id="navbarDropdown" data-bs-toggle="dropdown"></i>
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      <% if current_user == booking.user %>
-        <% if %w[accepted pending].include?(booking.status) %>
-          <a class="dropdown-item" href="">Cancel booking</a>
+<div class="btn-status btn <%= btn_type %>">
+  <% if Date.today < booking.from && %w[accepted pending].include?(booking.status) %>
+    <div class="nav-item dropdown">
+      <span id="navbarDropdown" data-bs-toggle="dropdown"><%= booking.status %> <i class="fa-solid fa-chevron-down" ></i></span>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <% if current_user == booking.user %>
+          <% if %w[accepted pending].include?(booking.status) %>
+            <a class="dropdown-item" href="">Cancel booking</a>
+          <% end %>
+        <% elsif current_user == booking.offer.user %>
+          <% if booking.status = "pending" %>
+            <a class="dropdown-item" href="">Accept booking</a>
+            <a class="dropdown-item" href="">Reject booking</a>
+          <% elsif booking.status = "accepted" %>
+            <a class="dropdown-item" href="">Cancel booking</a>
+          <% end %>
         <% end %>
-      <% elsif current_user == booking.offer.user %>
-        <% if booking.status = "pending" %>
-          <a class="dropdown-item" href="">Accept booking</a>
-          <a class="dropdown-item" href="">Reject booking</a>
-        <% elsif booking.status = "accepted" %>
-          <a class="dropdown-item" href="">Cancel booking</a>
-        <% end %>
-      <% end %>
+      </div>
     </div>
-  </li>
-<% end %>
+  <% else %>
+    <span><%= booking.status %></span>
+  <% end %>
+</div>
