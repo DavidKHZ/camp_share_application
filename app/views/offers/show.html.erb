@@ -6,7 +6,7 @@
   <div class="col-md-8">
     <%= render 'complete-product-description', offer: @offer %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 complete-product-description">
     <% if user_signed_in? %>
       <%= render 'booking-form', offer: @offer %>
     <% else %>

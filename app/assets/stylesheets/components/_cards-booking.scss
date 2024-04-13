@@ -4,6 +4,12 @@
   grid-gap: 16px;
 }
 
+.cards-booking-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards-booking {
