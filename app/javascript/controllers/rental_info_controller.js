@@ -7,10 +7,11 @@ export default class extends Controller {
   connect() {
     // console.log("Rental info connected")
     // console.log("Day rate :", this.element.getAttribute("data-rental-info-dayrate"))
+    this.update()
   }
 
   update () {
-    // console.log("Update triggered")
+    console.log("Update triggered")
     const from = this.stringToDate(this.fromTarget.value)
     const to = this.stringToDate(this.toTarget.value)
     const dayrate = this.element.getAttribute("data-rental-info-dayrate")
